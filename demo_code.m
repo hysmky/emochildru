@@ -33,27 +33,9 @@ else
     mycell_temp{1}.testlabels=childru_data{1, 1}.metadata(:,targetID);
     mycell_temp{1}.trainlabels=childru_data{2, 1}.metadata(:,targetID);
 end
-% Rearrange target variable depending on choice
 
-if targetID==1
-    mycell_temp{1}.trainlabels=groupages(mycell_temp{1}.trainlabels);
-    mycell_temp{1}.testlabels=groupages(mycell_temp{1}.testlabels);
-    if isval
-        mycell_temp{2}.trainlabels=groupages(mycell_temp{2}.trainlabels);
-        mycell_temp{2}.testlabels=groupages(mycell_temp{2}.testlabels);
-    end
-elseif targetID==2
-     mycell_temp{1}.trainlabels=1+(mycell_temp{1}.trainlabels);
-     mycell_temp{1}.testlabels=1+(mycell_temp{1}.testlabels);
-     if isval
-         mycell_temp{2}.trainlabels=1+(mycell_temp{2}.trainlabels);
-         mycell_temp{2}.testlabels=1+(mycell_temp{2}.testlabels);
-     end
-     
-     
-end
 disp('temp data loaded')
-%% Computer Kernels
+%% Compute Kernels
 norm_type=1;%1:min-max, 2: z-norm
 kernel_type=1;%1 for linear, 2 for RBF
 if ~isval % if test then use optimized preprocessing options
